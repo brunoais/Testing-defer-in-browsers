@@ -27,7 +27,7 @@
 			thing.innerHTML += 'The variable "array" must contain values like this: [3,4,6] it contains now: [' + array.toString() + ']<br>';
 			thing.innerHTML += 'The variable "arrayy" must contain values like this: [5,7,1,3,4,6] it contains now: [' + arrayy.toString() + ']<br>';
 		}
-		if(addEventListener){
+		if(window.addEventListener){
 			addEventListener('load', testLoading, false);
 		}else{
 			attachEvent('onload', testLoading);
