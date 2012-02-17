@@ -68,17 +68,17 @@
 		}
 
 		function testSuite() {
-			assertEquals('object', typeof array);
-			assertNotEquals('undefined', typeof inlineData);
-			assertFalse(inlineData2);
-			assertFalse(inlineData5);
-			assertTrue(inlineData1);
-			assertTrue(inlineData3);
-			assertTrue(inlineData4);
-			assertTrue(inlineData6);
-			assertTrue(inlineData7);
-			assertArrayEquals([3, 4, 6], array);
-			assertArrayEquals([5, 7, 1, 3, 4, 6], arrayy);
+			assertEquals('object', typeof window.array);
+			assertNotEquals('undefined', typeof window.inlineData);
+			assertFalse(window.inlineData2);
+			assertFalse(window.inlineData5);
+			assertTrue(window.inlineData1);
+			assertTrue(window.inlineData3);
+			assertTrue(window.inlineData4);
+			assertTrue(window.inlineData6);
+			assertTrue(window.inlineData7);
+			assertArrayEquals([3, 4, 6], window.array);
+			assertArrayEquals([5, 7, 1, 3, 4, 6], window.arrayy);
 
 			var color = (testsPassed === testsRun) ? 'green' : 'red';
 			log('<span style="color: ' + color + ';">[' + testsPassed + '/' + testsRun + '] Tests passed</span>');
