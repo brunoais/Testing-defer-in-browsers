@@ -84,7 +84,7 @@
 			log('<span style="color: ' + color + ';">[' + testsPassed + '/' + testsRun + '] Tests passed</span>');
 		}
 
-		if (addEventListener) {
+		if (window.addEventListener) {
 			addEventListener('load', testSuite, false);
 		} else {
 			attachEvent('onload', testSuite);
