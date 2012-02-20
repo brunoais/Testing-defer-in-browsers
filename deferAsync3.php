@@ -7,6 +7,7 @@ header('Content-Type:application/javascript', true, 200);
 ?>
 var arrayDefined3 = typeof array == 'object';
 var inlineData3 = typeof inlineData == 'boolean';
+var jjQuery3 = typeof window.jQuery == 'function';
 
 if(typeof array == 'object'){
 	array.push('3');

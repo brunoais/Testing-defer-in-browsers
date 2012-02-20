@@ -7,6 +7,7 @@ header('Content-Type:application/javascript', true, 200);
 ?>
 var arrayDefined2 = typeof array == 'object';
 var inlineData2 = typeof inlineData == 'boolean';
+var jjQuery2 = typeof window.jQuery == 'function';
 
 var arrayy = [];
 

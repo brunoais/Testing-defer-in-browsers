@@ -7,6 +7,7 @@ sleep(2);
 ?>
 var arrayDefined4 = typeof array == 'object';
 var inlineData4 = typeof inlineData == 'boolean';
+var jjQuery4 = typeof window.jQuery == 'function';
 
 if(typeof array == 'object'){
 	array.push('4');
