@@ -1,1 +1,101 @@
-page
+<!doctype html>
+<html>
+<head>
+	<title>sometitle</title>
+	<![if !IE]><script src="http://area51.phpbb.com/phpBB/assets/javascript/jquery.js" defer></script><![endif]>
+	<!--[if IE]><script type="text/javascript" src="http://area51.phpbb.com/phpBB/assets/javascript/jquery.js" ></script><![endif]-->
+
+	<script type="text/javascript" src="deferAsync.php" defer></script>
+	<script type="text/javascript" src="deferAsync2.php"></script>
+	<script type="text/javascript" src="deferAsync3.php" defer></script>
+</head>
+<body>
+	<div id="suite_log"></div>
+
+	<script type="text/javascript" src="deferAsync4.php" defer></script>
+	<script type="text/javascript" src="deferAsync5.php"></script>
+	<script type="text/javascript">var inlineData = true;</script>
+	<script type="text/javascript" src="deferAsync6.php" defer></script>
+	<script type="text/javascript" src="deferAsync7.php"></script>
+	<script type="text/javascript">
+		var testsRun = 0,
+			testsPassed = 0;
+
+		function log(html) {
+			var el = document.getElementById('suite_log');
+			el.innerHTML += html + '<br />';
+		}
+
+		function assert(condition, message) {
+			message = message || '';
+
+			if (condition) {
+				log('[OK] Test #' + (testsRun + 1) + ': ' + message);
+				testsPassed++;
+			} else {
+				log('[FAIL] Test #' + (testsRun + 1) + ': ' + message);
+			}
+
+			testsRun++;
+		}
+
+		function assertEquals(expected, actual, message) {
+			message = message || '';
+			assert(expected === actual, expected.toString() + ' === ' + actual.toString() + ' ' + message);
+		}
+
+		function assertArrayEquals(expected, actual, message) {
+			message = message || '';
+			assertEquals(expected.sort().toString(), actual.sort().toString(), message);
+		}
+
+		function assertNotEquals(notExpected, actual, message) {
+			message = message || '';
+			assert(notExpected !== actual, notExpected.toString() + ' !== ' + actual.toString() + ' ' + message);
+		}
+
+		function assertArrayNotEquals(expected, actual, message) {
+			message = message || '';
+			assertNotEquals(expected.sort().toString(), actual.sort().toString());
+		}
+
+		function assertTrue(value, message) {
+			message = message || '';
+			assertEquals(true, value, message);
+		}
+
+		function assertFalse(value, message) {
+			message = message || '';
+			assertEquals(false, value, message);
+		}
+
+		function testSuite() {
+			assertEquals('object', typeof window.array, "Failing means messed up system.");
+			assertNotEquals('undefined', typeof window.inlineData, "Failing means messed up system.");
+			assertFalse(window.inlineData2, "Failing means messed up system.");
+			assertFalse(window.inlineData5, "Failing means messed up system.");
+			assertTrue(window.inlineData1, "Failing means that the defer rules are not followed. Defer is probably being ignored by the browser");
+			assertTrue(window.inlineData3, "Failing means that the defer rules are not followed. Defer is probably being ignored by the browser");
+			assertTrue(window.inlineData4, "Failing means that the defer rules are not followed. Defer is probably being ignored by the browser");
+			assertTrue(window.inlineData6, "Failing means messed up system.");
+			assertTrue(window.inlineData7, "Failing means messed up system.");
+			assertArrayEquals([3, 4, 6], window.array, "Failing means that the defer rules are not followed. Defer is probably being ignored by the browser");
+			assertArrayEquals([5, 7, 1, 3, 4, 6], window.arrayy, "Failing means that the defer rules are not followed. Defer is probably being ignored by the browser");
+			
+			assertTrue(jjQuery1, "Failing means messed up system.");
+			assertFalse(jjQuery2, "Failing means that the defer rules are not followed. Defer is probably being ignored by the browser.");
+			assertTrue(jjQuery3, "Failing means messed up system.");
+			assertTrue(jjQuery4, "Failing means messed up system.");
+
+			var color = (testsPassed === testsRun) ? 'green' : 'red';
+			log('<span style="color: ' + color + ';">[' + testsPassed + '/' + testsRun + '] Tests passed</span>');
+		}
+
+		if (window.addEventListener) {
+			addEventListener('load', testSuite, false);
+		} else {
+			attachEvent('onload', testSuite);
+		}
+	</script>
+</body>
+</html>
